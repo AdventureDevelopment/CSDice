@@ -17,8 +17,8 @@ namespace CSDice
         }
 
         protected override void OnStart()
-        {
-            // Handle when your app starts
+        {           
+            MainPage.BindingContext = new MainViewModel(); 
         }
 
         protected override void OnSleep()

@@ -3,9 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CSDice"
              x:Class="CSDice.MainPage">
-
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Picker Title="Number of Sides"
+              HorizontalOptions="FillAndExpand"
+              TextColor="Black"
+              ItemsSource="{Binding NumberOfSidesOptions}"
+              SelectedItem="{Binding NumberOfSides }" />
+            <Picker Grid.Column="1" Title="Number of Dice"
+              HorizontalOptions="FillAndExpand"
+              TextColor="Black"
+              ItemsSource="{Binding NumberOfDiceOptions}"
+              SelectedItem="{Binding NumberOfDice }" />
+        </Grid>
+        <ListView Grid.Row="1" ItemsSource="{Binding Dice}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell TextColor="Black" DetailColor="Black" Text="{Binding SideUp}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Grid.Row="2" Text="Roll!!" Command="{Binding RollDiceCommand}" />
+    </Grid>
 </ContentPage>

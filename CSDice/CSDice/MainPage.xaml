@@ -14,16 +14,34 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Picker Title="Number of Sides"
-              HorizontalOptions="FillAndExpand"
-              TextColor="Black"
-              ItemsSource="{Binding NumberOfSidesOptions}"
-              SelectedItem="{Binding NumberOfSides }" />
-            <Picker Grid.Column="1" Title="Number of Dice"
-              HorizontalOptions="FillAndExpand"
-              TextColor="Black"
-              ItemsSource="{Binding NumberOfDiceOptions}"
-              SelectedItem="{Binding NumberOfDice }" />
+            <Frame Margin="5" CornerRadius="3" OutlineColor="Black">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Text="Number of Sides"></Label>
+                    <Picker Grid.Row="1" Title="Number of Sides"
+                        HorizontalOptions="FillAndExpand"
+                        TextColor="Black"
+                        ItemsSource="{Binding NumberOfSidesOptions}"
+                        SelectedItem="{Binding NumberOfSides }" />
+                </Grid>
+            </Frame>
+            <Frame Grid.Column="1" Margin="5" CornerRadius="3" OutlineColor="Black">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Text="Number of Dice"></Label>
+                    <Picker Grid.Row="1" Title="Number of Dice"
+                              HorizontalOptions="FillAndExpand"
+                              TextColor="Black"
+                              ItemsSource="{Binding NumberOfDiceOptions}"
+                              SelectedItem="{Binding NumberOfDice }" />
+                </Grid>
+            </Frame>
         </Grid>
         <ListView Grid.Row="1" ItemsSource="{Binding Dice}">
             <ListView.ItemTemplate>

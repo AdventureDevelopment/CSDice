@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CSDice"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="CSDice.MainPage">
     <Grid>
         <Grid.RowDefinitions>
@@ -43,13 +44,19 @@
                 </Grid>
             </Frame>
         </Grid>
-        <ListView Grid.Row="1" ItemsSource="{Binding Dice}">
-            <ListView.ItemTemplate>
+        <controls:GridView
+                Grid.Row="1"
+                ItemsSource="{Binding Dice}">
+            <controls:GridView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell TextColor="Black" DetailColor="Black" Text="{Binding SideUp}" />
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Label Text="{Binding SideUp}" />
+                        </ViewCell.View>
+                    </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </controls:GridView.ItemTemplate>
+        </controls:GridView>
         <Button Grid.Row="2" Text="Roll!!" Command="{Binding RollDiceCommand}" />
     </Grid>
 </ContentPage>

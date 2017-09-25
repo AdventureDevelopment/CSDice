@@ -32,7 +32,7 @@ namespace CSDice
 
         public int MaxNumberOfDice => 50;
 
-        public IList<SideOption> NumberOfSidesOptions { get; }
+        public ObservableCollection<SideOption> NumberOfSidesOptions { get; }
 
         public ObservableCollection<int> NumberOfDiceOptions { get; }
 

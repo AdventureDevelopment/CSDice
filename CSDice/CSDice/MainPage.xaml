@@ -8,7 +8,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="75"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -61,6 +61,6 @@
                 </ListView>
             </Grid>
         </Frame>
-        <Button Grid.Row="2" Text="Roll!!" Command="{Binding RollDiceCommand}" />
+        <Button Grid.Row="2" FontSize="Large" Text="Roll!!" Command="{Binding RollDiceCommand}" />
     </Grid>
 </ContentPage>

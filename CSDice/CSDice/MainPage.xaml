@@ -52,7 +52,10 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label Text="Dice Results: Side Facing Up"></Label>
-                <ListView Grid.Row="1" ItemsSource="{Binding Dice}">
+                <ListView Grid.Row="1"
+                          x:Name="DiceListView"
+                          ItemsSource="{Binding Dice}"
+                          ItemSelected="ListView_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell  TextColor="Black" DetailColor="Black" Text="{Binding SideUp}">

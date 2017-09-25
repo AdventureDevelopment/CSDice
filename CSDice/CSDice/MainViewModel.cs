@@ -34,7 +34,7 @@ namespace CSDice
         {
             get
             {
-                return Enumerable.Range(2, MaxNumberOfSides + 1).ToList();
+                return Enumerable.Range(2, MaxNumberOfSides - 1).ToList();
             }
         }
 
@@ -42,7 +42,7 @@ namespace CSDice
         {
             get
             {
-                return Enumerable.Range(1, MaxNumberOfDice + 1).ToList();
+                return Enumerable.Range(1, MaxNumberOfDice).ToList();
             }
         }
 

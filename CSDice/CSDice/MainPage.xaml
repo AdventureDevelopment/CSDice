@@ -21,20 +21,6 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Text="Number of Sides"></Label>
-                    <Picker Grid.Row="1" Title="Number of Sides"
-                        HorizontalOptions="FillAndExpand"
-                        TextColor="Black"
-                        ItemsSource="{Binding NumberOfSidesOptions}"
-                        SelectedItem="{Binding NumberOfSides }" />
-                </Grid>
-            </Frame>
-            <Frame Grid.Column="1" Margin="5" CornerRadius="3" OutlineColor="Black">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
                     <Label Text="Number of Dice"></Label>
                     <Picker Grid.Row="1" Title="Number of Dice"
                               HorizontalOptions="FillAndExpand"
@@ -43,20 +29,38 @@
                               SelectedItem="{Binding NumberOfDice }" />
                 </Grid>
             </Frame>
+            <Frame Grid.Column="1" Margin="5" CornerRadius="3" OutlineColor="Black">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Text="Number of Sides"></Label>
+                    <Picker Grid.Row="1" Title="Number of Sides"
+                        HorizontalOptions="FillAndExpand"
+                        TextColor="Black"
+                        ItemsSource="{Binding NumberOfSidesOptions}"
+                        SelectedItem="{Binding NumberOfSides }" />
+                </Grid>
+            </Frame>
         </Grid>
-        <controls:GridView
-                Grid.Row="1"
-                ItemsSource="{Binding Dice}">
-            <controls:GridView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <Label Text="{Binding SideUp}" />
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </controls:GridView.ItemTemplate>
-        </controls:GridView>
+        <Frame Grid.Row="1" Margin="5" CornerRadius="3" OutlineColor="Black">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Text="Dice Results: Side Facing Up"></Label>
+                <ListView Grid.Row="1" ItemsSource="{Binding Dice}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell  TextColor="Black" DetailColor="Black" Text="{Binding SideUp}">
+                            </TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Frame>
         <Button Grid.Row="2" Text="Roll!!" Command="{Binding RollDiceCommand}" />
     </Grid>
 </ContentPage>

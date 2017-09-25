@@ -41,7 +41,7 @@ namespace CSDice
 
         public void RollDice()
         {
-            SideUp = _randomNumber.Next(1, NumberOfSides);
+            SideUp = _randomNumber.Next(1, NumberOfSides + 1);
         }
     }
 }

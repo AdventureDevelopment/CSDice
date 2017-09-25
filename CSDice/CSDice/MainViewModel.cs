@@ -15,13 +15,15 @@ namespace CSDice
         public MainViewModel()
         {
             RollDiceCommand = new RelayCommand(RollDice);
-            NumberOfSides = 2;
+            NumberOfSidesOptions = new ObservableCollection<SideOption>(Enumerable.Range(2, MaxNumberOfSides - 1)
+                    .Select(s => new SideOption
+                    {
+                        SideDisplayName = "D" + s,
+                        NumberOfSides = s
+                    }));
+            NumberOfDiceOptions = new ObservableCollection<int>(Enumerable.Range(1, MaxNumberOfDice));
+            NumberOfSides = NumberOfSidesOptions.First();
             NumberOfDice = 1;
-        }
-
-        public void Initialize()
-        {
-
         }
 
         public ICommand RollDiceCommand { get; }
@@ -30,44 +32,12 @@ namespace CSDice
 
         public int MaxNumberOfDice => 50;
 
-        public IList<int> NumberOfSidesOptions
-        {
-            get
-            {
-                return Enumerable.Range(2, MaxNumberOfSides - 1).ToList();
-            }
-        }
+        public IList<SideOption> NumberOfSidesOptions { get; }
 
-        public IList<int> NumberOfDiceOptions
-        {
-            get
-            {
-                return Enumerable.Range(1, MaxNumberOfDice).ToList();
-            }
-        }
+        public ObservableCollection<int> NumberOfDiceOptions { get; }
 
-        public int NumberOfSidesAsIndex
-        {
-            get { return NumberOfSides - 1; }
-            set
-            {
-                NumberOfSides = value + 1;
-                RaisePropertyChanged();
-            }
-        }
-
-        public int NumberOfDiceAsIndex
-        {
-            get { return NumberOfDice - 1; }
-            set
-            {
-                NumberOfDice = value + 1;
-                RaisePropertyChanged();
-            }
-        }
-
-        private int _numberOfSides;
-        public int NumberOfSides
+        private SideOption _numberOfSides;
+        public SideOption NumberOfSides
         {
             get { return _numberOfSides; }
             set
@@ -75,7 +45,7 @@ namespace CSDice
                 _numberOfSides = value;
                 RaisePropertyChanged();
 
-                if (_numberOfDice != 0 && _numberOfSides != 0)
+                if (_numberOfDice != 0 && _numberOfSides.NumberOfSides != 0)
                 {
                     ChangeDiceSides();
                 }
@@ -116,7 +86,7 @@ namespace CSDice
             {
                 var dice = new DiceViewModel
                 {
-                    NumberOfSides = NumberOfSides,
+                    NumberOfSides = NumberOfSides.NumberOfSides,
                 };
 
                 Dice.Add(dice);
@@ -127,7 +97,7 @@ namespace CSDice
         {
             foreach(var dice in Dice)
             {
-                dice.NumberOfSides = NumberOfSides;
+                dice.NumberOfSides = NumberOfSides.NumberOfSides;
                 dice.SideUp = 1;
             }
         }

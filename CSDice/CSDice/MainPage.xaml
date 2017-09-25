@@ -39,6 +39,7 @@
                     <Picker Grid.Row="1" Title="Number of Sides"
                         HorizontalOptions="FillAndExpand"
                         TextColor="Black"
+                        ItemDisplayBinding="{Binding SideDisplayName}"
                         ItemsSource="{Binding NumberOfSidesOptions}"
                         SelectedItem="{Binding NumberOfSides }" />
                 </Grid>
